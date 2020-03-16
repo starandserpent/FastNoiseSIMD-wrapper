@@ -1,10 +1,19 @@
-#pragma once
+#pragma unmanaged
 
 using namespace System;
-
-namespace FastNoiseSIMDwrapper {
-	public ref class Class1
+#include "FastNoiseSIMD/FastNoiseSIMD/FastNoiseSIMD.h"
+namespace CLI {
+	public ref class FastNoiseSIMDwrapper
 	{
-		// TODO: Add your methods for this class here.
+		FastNoiseSIMD* fastnoise;
+
+	public:
+		FastNoiseSIMDwrapper(int seed) { fastnoise = FastNoiseSIMD::NewFastNoiseSIMD(seed); }
+			~FastNoiseSIMDwrapper() { this->!FastNoiseSIMDwrapper(); }
+			!FastNoiseSIMDwrapper() { delete fastnoise; }
+
+	float GetPerlinFractalSet(int startx, int starty, int startz, int sizex, int sizey, int sizez, float frequency) {
+		return *fastnoise->GetPerlinFractalSet(startx, starty, startz, sizex, sizey, sizez, frequency);
+	}
 	};
 }
