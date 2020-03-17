@@ -1,2 +1,0 @@
-#include "FastNoiseSIMD-wrapper.h"
-
