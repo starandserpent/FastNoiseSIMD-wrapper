@@ -1,0 +1,3 @@
+[submodule "FastNoiseSIMD"]
+	path = FastNoiseSIMD
+	url = git@github.com:Pawlost/FastNoiseSIMD.git
